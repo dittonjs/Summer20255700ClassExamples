@@ -4,6 +4,7 @@ import kotlin.coroutines.CoroutineContext
 
 class Application() : CoroutineScope {
     override val coroutineContext: CoroutineContext = Dispatchers.IO
+
     private val commandLineDisplay = CommandLineDisplay()
 
     init {
@@ -31,15 +32,6 @@ class Application() : CoroutineScope {
         station?.humidity = humidity
         station?.windSpeed = windSpeed
         station?.timeStamp = timeStamp
-        if (station != null) {
-            commandLineDisplay.update(
-                temp = station.temp,
-                humidity = station.humidity,
-                windSpeed=station.windSpeed,
-                timeStamp = station.timeStamp,
-                name=station.name
-            )
-        }
     }
 
 }

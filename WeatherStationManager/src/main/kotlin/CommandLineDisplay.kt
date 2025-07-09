@@ -1,9 +1,10 @@
-class CommandLineDisplay {
-    fun update(temp: Double, windSpeed: Double, humidity: Double, timeStamp: String, name: String) {
-        println("========== Weather for $name ===============")
-        println("TimeStamp: $timeStamp")
-        println("Temp: $temp")
-        println("Humidity: $humidity")
-        println("Wind Speed: $windSpeed")
+class CommandLineDisplay: WeatherStationObserver {
+    override fun update(weatherStation: WeatherStation) {
+        println("========== Weather for ${weatherStation.name} ===============")
+        println("TimeStamp: ${weatherStation.timeStamp}")
+        println("Temp: ${weatherStation.temp}")
+        println("Humidity: ${weatherStation.humidity}")
+        println("Wind Speed: ${weatherStation.windSpeed}")
     }
+
 }

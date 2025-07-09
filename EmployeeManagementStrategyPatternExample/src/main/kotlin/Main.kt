@@ -1,8 +1,20 @@
 
 
+
+private val STRATEGIES =
+    mapOf(
+        "csv" to CSVStrategy(),
+        "json" to JSONStrategy(),
+        "xml" to XMLStrategy()
+    )
+
+
 fun main() {
     val employees = generateEmployees()
-    
+    println("What format do you want the data (xml,json,csv):")
+    val input = readln()
+    println(STRATEGIES[input]?.serialize(employees) ?: "Invalid selection")
+
 }
 
 fun generateEmployees(): List<Employee> {

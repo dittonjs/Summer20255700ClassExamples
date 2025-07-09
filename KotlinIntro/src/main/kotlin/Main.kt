@@ -19,6 +19,11 @@ fun displayDuck(duck: Duck) {
 }
 
 
+fun <T, R: Number> clamp(min: R, max: R, block: (T) -> R ): (T) -> R {
+    fun wrappedFunction(vararg T) {
+    `    return block()
+    }
+}
 
 
 fun doMath(a: Int, b: Int) = a + b
