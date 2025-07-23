@@ -23,7 +23,6 @@ import org.example.project.MyScope
 import org.example.project.Navigation
 import kotlin.concurrent.thread
 
-// uses language agnostic dependency injection
 
 
 
@@ -37,26 +36,22 @@ suspend fun doWork() {
 }
 
 
-fun doMath(a: Int, b: Int) = a + b
-
-fun logMath(block: (a: Int, b: Int) -> Int): (Int,Int) -> Int {
-    return {a: Int, b: Int ->
-        block(a, b)
-    }
-}
 
 
 
-
+// uses language agnostic dependency injection
 @Composable
 fun Home (navigation: Navigation) {
     var running by remember { mutableStateOf(false) }
 
+    var scope = rememberCoroutineScope()
 
     LaunchedEffect(running) {
-        if (running) {
-            doWork()
-        }
+//        if (running) {
+            scope.launch {
+                doWork()
+            }
+//        }
     }
 
     Column {
